@@ -26,6 +26,7 @@ namespace Restaurant
             MainGrid_Menü.Visibility = Visibility.Visible;
             MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Hidden;
             MainGrid_Rechungen_erstellen.Visibility = Visibility.Hidden;
+            MainGrid_Rechnungsübersicht.Visibility = Visibility.Hidden;
         }
         private void Button_ZumHauptmenü(object sender, RoutedEventArgs e)
         {
@@ -33,6 +34,8 @@ namespace Restaurant
             MainGrid_Menü.Visibility = Visibility.Visible;
             MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Hidden;
             MainGrid_Rechungen_erstellen.Visibility = Visibility.Hidden;
+            MainGrid_Rechnungsübersicht.Visibility = Visibility.Hidden;
+
         }
 
         private void Button_SpeisekarteVerwalten(object sender, RoutedEventArgs e)
@@ -40,6 +43,8 @@ namespace Restaurant
             MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Visible;
             MainGrid_Menü.Visibility = Visibility.Hidden;
             MainGrid_Rechungen_erstellen.Visibility = Visibility.Hidden;
+            MainGrid_Rechnungsübersicht.Visibility = Visibility.Hidden;
+
 
         }
 
@@ -48,11 +53,15 @@ namespace Restaurant
             MainGrid_Rechungen_erstellen.Visibility = Visibility.Visible;
             MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Hidden;
             MainGrid_Menü.Visibility = Visibility.Hidden;
+            MainGrid_Rechnungsübersicht.Visibility = Visibility.Hidden;
         }
 
         private void Button_Rechnungsübersicht(object sender, RoutedEventArgs e)
         {
-
+            MainGrid_Rechnungsübersicht.Visibility = Visibility.Visible;
+            MainGrid_Rechungen_erstellen.Visibility = Visibility.Hidden;
+            MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Hidden;
+            MainGrid_Menü.Visibility = Visibility.Hidden;
         }
 
         private void Button_Github(object sender, RoutedEventArgs e)
@@ -81,6 +90,16 @@ namespace Restaurant
         }
 
         private void Rechnung_Speichern(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Grid_Rechnungen_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Button_Status_ändern_Rechnungen(object sender, RoutedEventArgs e)
         {
 
         }
