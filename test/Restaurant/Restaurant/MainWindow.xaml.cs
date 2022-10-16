@@ -23,24 +23,31 @@ namespace Restaurant
         public MainWindow()
         {
             InitializeComponent();
+            MainGrid_Menü.Visibility = Visibility.Visible;
+            MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Hidden;
+            MainGrid_Rechungen_erstellen.Visibility = Visibility.Hidden;
         }
         private void Button_ZumHauptmenü(object sender, RoutedEventArgs e)
         {
             
             MainGrid_Menü.Visibility = Visibility.Visible;
             MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Hidden;
+            MainGrid_Rechungen_erstellen.Visibility = Visibility.Hidden;
         }
 
         private void Button_SpeisekarteVerwalten(object sender, RoutedEventArgs e)
         {
             MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Visible;
             MainGrid_Menü.Visibility = Visibility.Hidden;
+            MainGrid_Rechungen_erstellen.Visibility = Visibility.Hidden;
 
         }
 
         private void Button_RechnungErstellen(object sender, RoutedEventArgs e)
         {
-
+            MainGrid_Rechungen_erstellen.Visibility = Visibility.Visible;
+            MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Hidden;
+            MainGrid_Menü.Visibility = Visibility.Hidden;
         }
 
         private void Button_Rechnungsübersicht(object sender, RoutedEventArgs e)
@@ -59,6 +66,21 @@ namespace Restaurant
         }
 
         private void Button_SaveChanges(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RechnungAufnehmen(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Delete(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Rechnung_Speichern(object sender, RoutedEventArgs e)
         {
 
         }

@@ -108,7 +108,7 @@
             </UniformGrid>
         </Grid>
         
-        <Grid x:Name="MainGrid_Rechungen_erstellen" d:IsHidden="False" >
+        <Grid x:Name="MainGrid_Rechungen_erstellen" d:IsHidden="True" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="5*"/>
