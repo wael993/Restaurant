@@ -65,7 +65,7 @@
             </UniformGrid>
         </Grid>
 
-        <Grid x:Name="MainGrid_SpeisekarteVerwalten" d:IsHidden="False">
+        <Grid x:Name="MainGrid_SpeisekarteVerwalten" d:IsHidden="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="3*"/>
@@ -106,9 +106,71 @@
                 <Button Content="Ausgewähltes Element löschen"  Background="Red" Click="Button_DeleteCurrentItem" />
                 <Button Content="Änderungen Speichern"  Background="Green" Click="Button_SaveChanges"/>
             </UniformGrid>
-</Grid>
-        
-        
-        
         </Grid>
+        
+        <Grid x:Name="MainGrid_Rechungen_erstellen" d:IsHidden="False" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Rechnungen erstellen" Style="{StaticResource Überschrift}"  Grid.Column="1" Grid.ColumnSpan="2"/>
+            <ListView Grid.Row="1" Grid.Column="1"
+                  x:Name="SpeiseAufnehmen" 
+                  IsSynchronizedWithCurrentItem="True"
+                  ItemsSource="{Binding }" SelectedIndex="1" MouseDoubleClick="RechnungAufnehmen" 
+                      Grid.RowSpan="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>                   
+                                <Run Text="{Binding Produkt_ID}"/>
+                                <Run Text=" - "/>
+                                <Run Text="{Binding Produkt_Name}"/>
+                                <Run Text=" - "/>
+                                <Run Text="{Binding Preis}"/>
+                                <Run Text="("/>
+                                <Run Text="{Binding Beschreibung}"/>
+                                <Run Text=")"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <WrapPanel Grid.Row="1" Grid.Column="2" >
+                <WrapPanel.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Width" Value="100"/>
+                    </Style>
+                </WrapPanel.Resources>
+                <TextBlock Margin="10" Text="Mitarbeiter ID:" />
+                <TextBox x:Name="ID_Mitarbeiter"/>
+
+                <TextBlock Margin="10" Text="Tischnummer:"/>
+                <TextBox x:Name="Tischnummer"/>
+                <DataGrid ItemsSource="{Binding }" Name="Bestellung" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="Delete">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Produkt ID" Binding="{Binding Speise.Produkt_ID}" Width="*"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Speise.Produkt_Name}" Width="*"/>
+                        <DataGridTextColumn Header="Anzahl" Binding="{Binding Anzahl}" Width="*"/>
+                        <DataGridTextColumn Header="Preis" Binding="{Binding Speise.Preis}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock Text="Insgesamt:" Margin="5,0"/>
+                <TextBlock x:Name="Rechnungskosten"/>
+                <TextBlock Text="€" />
+            </WrapPanel>
+            <Button Grid.Column="2" Grid.Row="2" Click="Rechnung_Speichern" Content="Rechnung erstellen"/>
+
+        </Grid>
+    </Grid>
 </Window>
