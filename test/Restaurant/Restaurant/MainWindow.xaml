@@ -31,13 +31,23 @@
             <Setter Property="AutoGenerateColumns" Value="False"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
+        <Style x:Key="Textbox" TargetType="TextBox">
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="500"/>
+            <Setter Property="Opacity" Value="0.75"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Border  CornerRadius="6" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="75" Margin="20" Grid.Column="1" BorderThickness="2" BorderBrush="Black">
             <Button Content="Menü"  Click="Button_ZumHauptmenü" BorderThickness="0" Margin="1"/>
             <!--immer sichtbar-->
         </Border>
-        <Grid x:Name="MainGrid_Menü" Visibility="Visible">
+        <Grid x:Name="MainGrid_Menü" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="4*"/>
@@ -53,11 +63,50 @@
                 <Button Content="Rechnungsübersicht" Click="Button_Rechnungsübersicht"/>
                 <Button Content="Github Repository" Click="Button_Github" Background="CornflowerBlue"/>
             </UniformGrid>
-
-          
-
-
         </Grid>
+
+        <Grid x:Name="MainGrid_SpeisekarteVerwalten" d:IsHidden="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Speisekarte verwalten" Style="{StaticResource Überschrift}" Grid.Column="1"/>
+            <DataGrid Grid.Row="1" Grid.Column="1"
+                      ItemsSource="{Binding}"
+                      Style="{StaticResource Datagrid}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding}" Width="2*"/>
+                    <DataGridTextColumn Header="Preis" Binding="{Binding}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Beschreibung /Zutaten" Binding="{Binding}" Width="3*" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0, 20">
+                <TextBlock Text="Produkt hinzufügen"/>
+                <TextBlock Text="Name"/>
+                <TextBox x:Name="AddName" Style="{StaticResource Textbox }"/>
+                <TextBlock Text="Preis" />
+                <TextBox x:Name="AddPreis" Style="{StaticResource Textbox }"/>
+                <TextBlock Text="Beschreibung"/>
+                <TextBox x:Name="AddBeschreibung" Style="{StaticResource Textbox }"/>
+            </StackPanel>
+            
+            <UniformGrid Grid.Column="1" Grid.Row="3" Height="100">
+                <UniformGrid.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource button}"/>
+                </UniformGrid.Resources>
+                <Button Content="Ausgewähltes Element löschen"  Background="Red" Click="Button_DeleteCurrentItem" />
+                <Button Content="Änderungen Speichern"  Background="Green" Click="Button_SaveChanges"/>
+            </UniformGrid>
+</Grid>
         
         
         
