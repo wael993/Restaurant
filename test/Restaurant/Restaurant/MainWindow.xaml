@@ -7,30 +7,9 @@
         mc:Ignorable="d"
         Title="La Trattoria del Postillione" Height="1000" Width="1600" FontSize="20" WindowState="Maximized">
     <Window.Resources>
-        <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="FontSize" Value="36"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="SkyBlue"/>
-            <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="BorderThickness" Value="4"/>
-        </Style>
-        <Style x:Key="Überschrift" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="52"/>
-            <Setter Property="TextDecorations" Value="Underline"/>
-            <Setter Property="FontFamily" Value="Garamond"/>
-        </Style>
+       
 
-        <Style x:Key="Datagrid" TargetType="DataGrid">
-            <Setter Property="IsSynchronizedWithCurrentItem" Value="True"/>
-            <Setter Property="CanUserAddRows" Value="False"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="AutoGenerateColumns" Value="False"/>
-            <Setter Property="Cursor" Value="Hand"/>
-        </Style>
+   
         <Style x:Key="Textbox" TargetType="TextBox">
             <Setter Property="Height" Value="40" />
             <Setter Property="Margin" Value="5" />
@@ -47,12 +26,19 @@
             <Button Content="Menü"  Click="Button_ZumHauptmenü" BorderThickness="0" Margin="1"/>
             <!--immer sichtbar-->
         </Border>
-        <Grid x:Name="MainGrid_Menü" Visibility="Hidden">
+        <Grid x:Name="MainGrid_Menü" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="36"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Background" Value="SkyBlue"/>
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="BorderThickness" Value="4"/>
+            </Style>
             <TextBlock Text="La Trattoria del Postillione" Style="{StaticResource Überschrift}"/>
             <UniformGrid Grid.Row="1" Margin="100,0">
                 <UniformGrid.Resources>
@@ -87,9 +73,16 @@
                     <DataGridTextColumn Header="Beschreibung /Zutaten" Binding="{Binding}" Width="3*" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
-            
-            
-        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0, 20">
+
+            <Style x:Key="Überschrift" TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="52"/>
+                <Setter Property="TextDecorations" Value="Underline"/>
+                <Setter Property="FontFamily" Value="Garamond"/>
+            </Style>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Margin="0, 20">
                 <TextBlock Text="Produkt hinzufügen"/>
                 <TextBlock Text="Name"/>
                 <TextBox x:Name="AddName" Style="{StaticResource Textbox }"/>
@@ -121,7 +114,15 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
-
+            <Style x:Key="Datagrid" TargetType="DataGrid">
+                <Setter Property="IsSynchronizedWithCurrentItem" Value="True"/>
+                <Setter Property="CanUserAddRows" Value="False"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Style>
             <TextBlock Text="Rechnungen erstellen" Style="{StaticResource Überschrift}"  Grid.Column="1" Grid.ColumnSpan="2"/>
             <ListView Grid.Row="1" Grid.Column="1"
                   x:Name="SpeiseAufnehmen" 
