@@ -106,6 +106,8 @@
                 <Button Content="Ausgewähltes Element löschen"  Background="Red" Click="Button_DeleteCurrentItem" />
                 <Button Content="Änderungen Speichern"  Background="Green" Click="Button_SaveChanges"/>
             </UniformGrid>
+            <Label  x:Name="AusgewähltesProdukt_ID" Content="{Binding /Produkt_ID}" Visibility="Visible" Margin="-5,0,5,0" Grid.Row="3"/>
+
         </Grid>
         
         <Grid x:Name="MainGrid_Rechungen_erstellen" d:IsHidden="True" >
