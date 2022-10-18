@@ -6,13 +6,6 @@ go
 USE La_Trattoria_del_Postillione;
 go
 
--- create and use Database
-IF DB_ID('Rechnung_element') IS NOT NULL
-create database Restaurant_Bestellungen
-go
-
-USE Restaurant_Bestellungen;
-go
 -- create tables
 IF OBJECT_ID('Rechnung_element') IS NOT NULL
   DROP TABLE Rechnung_element;
@@ -29,3 +22,4 @@ GO
 IF OBJECT_ID('Mitarbeiter') IS NOT NULL
   DROP TABLE Mitarbeiter;
 GO
+
