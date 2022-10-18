@@ -125,21 +125,83 @@ namespace Restaurant
             MainGrid_SpeisekarteVerwalten.DataContext = null;
             MainGrid_SpeisekarteVerwalten.DataContext = ctx.Speise.ToList();
         }
-    }
+    
 
         private void RechnungAufnehmen(object sender, MouseButtonEventArgs e)
         {
-
+            Rechnung_element re = new Rechnung_element();
+            Speise s = (Speise)SpeiseAufnehmen.SelectedItem;
+            if (BestellungAufnehmen_Rechnungsposten != null && BestellungAufnehmen_Rechnungsposten.Any(x => x.Speise.Produkt_ID == s.Produkt_ID))
+            {
+                re = BestellungAufnehmen_Rechnungsposten.FirstOrDefault(x => x.Speise.Produkt_ID == s.Produkt_ID);
+                re.Anzahl++;
+            }
+            else
+            {
+                re.Speise = s;
+                re.Anzahl = 1;
+                BestellungAufnehmen_Rechnungsposten.Add(re);
+            }
+            Gesamt();
+            Bestellung.DataContext = null;
+            Bestellung.DataContext = BestellungAufnehmen_Rechnungsposten;
         }
 
         private void Delete(object sender, MouseButtonEventArgs e)
         {
-
+            Rechnung_element re = (Rechnung_element)Bestellung.SelectedItem;
+            if (re.Anzahl == 1)
+            {
+                BestellungAufnehmen_Rechnungsposten.Remove(re);
+            }
+            re.Anzahl--;
+            Gesamt();
+            Bestellung.DataContext = null;
+            Bestellung.DataContext = BestellungAufnehmen_Rechnungsposten;
         }
-
+        private void Gesamt()
+        {
+            decimal total = 0;
+            foreach (Rechnung_element pos in BestellungAufnehmen_Rechnungsposten)
+            {
+                total += pos.Speise.Preis * pos.Anzahl;
+            }
+            Rechnungskosten.Text = Convert.ToString(total);
+        }
         private void Rechnung_Speichern(object sender, RoutedEventArgs e)
         {
+            if (ID_Mitarbeiter.Text == "")
+            {
+                MessageBox.Show("MiTarbeiter ID!");
+            }
+            else if (Tischnummer.Text == "")
+            {
+                MessageBox.Show("Tischnummer!");
+            }
+            else
+            {
+                Rechnung neueRechnung = new Rechnung();
+                neueRechnung.Mitarbeiter_id = Convert.ToInt32(ID_Mitarbeiter.Text);
+                neueRechnung.Rechnung_status = "bezahlt";
+                neueRechnung.Tisch_ID = Convert.ToInt32(Tischnummer.Text);
+                neueRechnung.Rechnung_datum = DateTime.Now;
+                ctx.Rechnung.Add(neueRechnung);
+                ctx.SaveChanges();
+                int id = neueRechnung.Rechnung_id;
+                foreach (var v in BestellungAufnehmen_Rechnungsposten)
+                {
+                    v.Rechnung_id = id;
+                    ctx.Rechnung_element.Add(v);
+                }
+                ctx.SaveChanges();
 
+                ID_Mitarbeiter.Text = "";
+                Tischnummer.Text = "";
+                BestellungAufnehmen_Rechnungsposten.Clear();
+                Bestellung.DataContext = null;
+                Bestellung.DataContext = BestellungAufnehmen_Rechnungsposten;
+                Rechnungskosten.Text = "";
+            }
         }
 
         private void Grid_Rechnungen_MouseDown(object sender, MouseButtonEventArgs e)
