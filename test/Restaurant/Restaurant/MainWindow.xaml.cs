@@ -206,11 +206,22 @@ namespace Restaurant
 
         private void Grid_Rechnungen_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            decimal total = 0;
+            Rechnung r = (Rechnung)Grid_Rechnungen.SelectedItem;
+            Rechnungspositionen = ctx.Rechnung_element.Where(x => x.Rechnung_id == r.Rechnung_id).ToList();
+            Grid_Rechnungselemente.DataContext = Rechnungspositionen.ToList();
 
+            //Gesamt ausrechnen
+            foreach (Rechnung_element pos in Rechnungspositionen)
+            {
+                total += pos.Speise.Preis * pos.Anzahl;
+            }
+            Total.Text = Convert.ToString(total);
         }
 
         private void Button_Status_ändern_Rechnungen(object sender, RoutedEventArgs e)
         {
+            ctx.SaveChanges();
 
         }
     }
