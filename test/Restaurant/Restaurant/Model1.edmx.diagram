@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9ecc970032a246868aa327ef82954c45" Name="Diagram1">
+        <EntityTypeShape EntityType="La_Trattoria_del_PostillioneModel.Mitarbeiter" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="La_Trattoria_del_PostillioneModel.Rechnung" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="La_Trattoria_del_PostillioneModel.Rechnung_element" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="La_Trattoria_del_PostillioneModel.Speise" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="La_Trattoria_del_PostillioneModel.fk_Mitarbeiter" ManuallyRouted="false" />
+        <AssociationConnector Association="La_Trattoria_del_PostillioneModel.fk_Rechnung" ManuallyRouted="false" />
+        <AssociationConnector Association="La_Trattoria_del_PostillioneModel.fk_Speise" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
