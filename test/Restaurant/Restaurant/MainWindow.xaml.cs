@@ -87,7 +87,7 @@ namespace Restaurant
             int id = (int)AusgewähltesProdukt_ID.Content; //Label (hidden)
             Speise s = ctx.Speise.Where(x => x.Produkt_ID == id).FirstOrDefault();
 
-            if (ctx.Rechnung_element.All(x => x.Speise.Produkt_ID != s.Produkt_ID)) //überprüfen,ob Produkt schon in Rechnung vorhanden
+            if (ctx.Rechnung_element.All(x => x.Speise.Produkt_ID != s.Produkt_ID)) //check whether the product has already been invoiced
             {
                 ctx.Speise.Remove(s);
                 ctx.SaveChanges();
@@ -105,13 +105,12 @@ namespace Restaurant
         {
             if (AddBeschreibung.Text != "" && AddName.Text != "" && AddPreis.Text != "")
             {
-                if (decimal.TryParse(AddPreis.Text, out decimal result)) //Prüfen, ob Preis deicmal
+                if (decimal.TryParse(AddPreis.Text, out decimal result)) //Check if price is decimal
                 {
                     Speise NeueSpeise = new Speise();
                     NeueSpeise.Beschreibung = AddBeschreibung.Text;
                     NeueSpeise.Preis = Convert.ToDecimal(result);
                     NeueSpeise.Produkt_Name = AddName.Text;
-                    //ctx.Speise.Count();
                     ctx.Speise.Add(NeueSpeise);
                     AddBeschreibung.Text = "";
                     AddName.Text = "";
@@ -119,7 +118,7 @@ namespace Restaurant
                 }
                 else
                 {
-                    MessageBox.Show("Der eingegebe Wert muss eine Zahl sein");
+                    MessageBox.Show("The entered value must be a number");
                 }
             }
             ctx.SaveChanges();
