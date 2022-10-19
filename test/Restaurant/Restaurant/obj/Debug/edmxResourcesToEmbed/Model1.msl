@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="La_Trattoria_del_PostillioneModelStoreContainer" CdmEntityContainer="La_Trattoria_del_PostillioneEntities">
+    <EntitySetMapping Name="Mitarbeiter">
+      <EntityTypeMapping TypeName="La_Trattoria_del_PostillioneModel.Mitarbeiter">
+        <MappingFragment StoreEntitySet="Mitarbeiter">
+          <ScalarProperty Name="Mitarbeiter_id" ColumnName="Mitarbeiter_id" />
+          <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+          <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rechnung">
+      <EntityTypeMapping TypeName="La_Trattoria_del_PostillioneModel.Rechnung">
+        <MappingFragment StoreEntitySet="Rechnung">
+          <ScalarProperty Name="Rechnung_id" ColumnName="Rechnung_id" />
+          <ScalarProperty Name="Rechnung_status" ColumnName="Rechnung_status" />
+          <ScalarProperty Name="Rechnung_datum" ColumnName="Rechnung_datum" />
+          <ScalarProperty Name="Mitarbeiter_id" ColumnName="Mitarbeiter_id" />
+          <ScalarProperty Name="Tisch_ID" ColumnName="Tisch_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rechnung_element">
+      <EntityTypeMapping TypeName="La_Trattoria_del_PostillioneModel.Rechnung_element">
+        <MappingFragment StoreEntitySet="Rechnung_element">
+          <ScalarProperty Name="Rechnung_element_id" ColumnName="Rechnung_element_id" />
+          <ScalarProperty Name="Rechnung_id" ColumnName="Rechnung_id" />
+          <ScalarProperty Name="Produkt_ID" ColumnName="Produkt_ID" />
+          <ScalarProperty Name="Anzahl" ColumnName="Anzahl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Speise">
+      <EntityTypeMapping TypeName="La_Trattoria_del_PostillioneModel.Speise">
+        <MappingFragment StoreEntitySet="Speise">
+          <ScalarProperty Name="Produkt_ID" ColumnName="Produkt_ID" />
+          <ScalarProperty Name="Produkt_Name" ColumnName="Produkt_Name" />
+          <ScalarProperty Name="Preis" ColumnName="Preis" />
+          <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

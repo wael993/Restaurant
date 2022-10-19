@@ -78,13 +78,14 @@
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Speisekarte verwalten" Style="{StaticResource Überschrift}" Grid.Column="1"/>
-            <DataGrid Grid.Row="1" Grid.Column="1"
+         
+            <DataGrid x:Name="sp" Grid.Row="1" Grid.Column="1"
                       ItemsSource="{Binding}"
                       Style="{StaticResource Datagrid}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding}" Width="2*"/>
-                    <DataGridTextColumn Header="Preis" Binding="{Binding}" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Beschreibung /Zutaten" Binding="{Binding}" Width="3*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Produkt_Name}" Width="2*"/>
+                    <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Beschreibung /Zutaten" Binding="{Binding Beschreibung}" Width="3*" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
             

@@ -13,3 +13,10 @@ F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.Ge
 F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.CoreCompileInputs.cache
 F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\obj\Debug\Restaurant.exe
 F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\obj\Debug\Restaurant.pdb
+F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\bin\Debug\EntityFramework.dll
+F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\bin\Debug\EntityFramework.SqlServer.dll
+F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\bin\Debug\EntityFramework.xml
+F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\bin\Debug\EntityFramework.SqlServer.xml
+F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\bin\Debug\de\EntityFramework.resources.dll
+F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\obj\Debug\Restaurant_Content.g.cs
+F:\Arbeit\projekt\Erst\test\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.CopyComplete

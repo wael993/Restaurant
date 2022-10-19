@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="La_Trattoria_del_PostillioneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Mitarbeiter">
+    <Key>
+      <PropertyRef Name="Mitarbeiter_id" />
+    </Key>
+    <Property Name="Mitarbeiter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rechnung" Relationship="Self.fk_Mitarbeiter" FromRole="Mitarbeiter" ToRole="Rechnung" />
+  </EntityType>
+  <EntityType Name="Rechnung">
+    <Key>
+      <PropertyRef Name="Rechnung_id" />
+    </Key>
+    <Property Name="Rechnung_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rechnung_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Rechnung_datum" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Mitarbeiter_id" Type="Int32" Nullable="false" />
+    <Property Name="Tisch_ID" Type="Int32" />
+    <NavigationProperty Name="Mitarbeiter" Relationship="Self.fk_Mitarbeiter" FromRole="Rechnung" ToRole="Mitarbeiter" />
+    <NavigationProperty Name="Rechnung_element" Relationship="Self.fk_Rechnung" FromRole="Rechnung" ToRole="Rechnung_element" />
+  </EntityType>
+  <EntityType Name="Rechnung_element">
+    <Key>
+      <PropertyRef Name="Rechnung_element_id" />
+    </Key>
+    <Property Name="Rechnung_element_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rechnung_id" Type="Int32" />
+    <Property Name="Produkt_ID" Type="Int32" Nullable="false" />
+    <Property Name="Anzahl" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rechnung" Relationship="Self.fk_Rechnung" FromRole="Rechnung_element" ToRole="Rechnung" />
+    <NavigationProperty Name="Speise" Relationship="Self.fk_Speise" FromRole="Rechnung_element" ToRole="Speise" />
+  </EntityType>
+  <EntityType Name="Speise">
+    <Key>
+      <PropertyRef Name="Produkt_ID" />
+    </Key>
+    <Property Name="Produkt_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Produkt_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Preis" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Beschreibung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rechnung_element" Relationship="Self.fk_Speise" FromRole="Speise" ToRole="Rechnung_element" />
+  </EntityType>
+  <Association Name="fk_Mitarbeiter">
+    <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
+    <End Role="Rechnung" Type="Self.Rechnung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mitarbeiter">
+        <PropertyRef Name="Mitarbeiter_id" />
+      </Principal>
+      <Dependent Role="Rechnung">
+        <PropertyRef Name="Mitarbeiter_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Rechnung">
+    <End Role="Rechnung" Type="Self.Rechnung" Multiplicity="0..1" />
+    <End Role="Rechnung_element" Type="Self.Rechnung_element" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rechnung">
+        <PropertyRef Name="Rechnung_id" />
+      </Principal>
+      <Dependent Role="Rechnung_element">
+        <PropertyRef Name="Rechnung_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Speise">
+    <End Role="Speise" Type="Self.Speise" Multiplicity="1" />
+    <End Role="Rechnung_element" Type="Self.Rechnung_element" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Speise">
+        <PropertyRef Name="Produkt_ID" />
+      </Principal>
+      <Dependent Role="Rechnung_element">
+        <PropertyRef Name="Produkt_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="La_Trattoria_del_PostillioneEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" />
+    <EntitySet Name="Rechnung" EntityType="Self.Rechnung" />
+    <EntitySet Name="Rechnung_element" EntityType="Self.Rechnung_element" />
+    <EntitySet Name="Speise" EntityType="Self.Speise" />
+    <AssociationSet Name="fk_Mitarbeiter" Association="Self.fk_Mitarbeiter">
+      <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+      <End Role="Rechnung" EntitySet="Rechnung" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Rechnung" Association="Self.fk_Rechnung">
+      <End Role="Rechnung" EntitySet="Rechnung" />
+      <End Role="Rechnung_element" EntitySet="Rechnung_element" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Speise" Association="Self.fk_Speise">
+      <End Role="Speise" EntitySet="Speise" />
+      <End Role="Rechnung_element" EntitySet="Rechnung_element" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

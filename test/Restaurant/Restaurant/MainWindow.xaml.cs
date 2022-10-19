@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace Restaurant
 {
@@ -22,9 +23,11 @@ namespace Restaurant
     /// </summary>
     public partial class MainWindow : Window
     {
+
         List<Rechnung_element> Rechnungspositionen;
         List<Rechnung_element> BestellungAufnehmen_Rechnungsposten = new List<Rechnung_element>();
         private La_Trattoria_del_PostillioneEntities ctx = new La_Trattoria_del_PostillioneEntities();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +38,6 @@ namespace Restaurant
         }
         private void Button_ZumHauptmenü(object sender, RoutedEventArgs e)
         {
-            
             MainGrid_Menü.Visibility = Visibility.Visible;
             MainGrid_SpeisekarteVerwalten.Visibility = Visibility.Hidden;
             MainGrid_Rechungen_erstellen.Visibility = Visibility.Hidden;
@@ -51,8 +53,7 @@ namespace Restaurant
             MainGrid_Rechnungsübersicht.Visibility = Visibility.Hidden;
             ctx.Speise.Load();
             MainGrid_SpeisekarteVerwalten.DataContext = ctx.Speise.ToList();
-
-            
+            sp.DataContext = ctx.Speise.ToList();
         }
 
         private void Button_RechnungErstellen(object sender, RoutedEventArgs e)
