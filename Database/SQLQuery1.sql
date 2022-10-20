@@ -113,3 +113,4 @@ INSERT INTO Rechnung_element(Rechnung_id, Produkt_ID, Anzahl) VALUES(3003,2013,2
 INSERT INTO Rechnung_element(Rechnung_id, Produkt_ID, Anzahl) VALUES(3003,2007,2);
 INSERT INTO Rechnung_element(Rechnung_id, Produkt_ID, Anzahl) VALUES(3003,2009,2);
 
+Select * from Rechnung_element
