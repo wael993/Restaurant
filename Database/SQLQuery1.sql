@@ -1,6 +1,6 @@
 -- create and use Database
 IF DB_ID('La_Trattoria_del_Postillione') IS NULL
-DROP database La_Trattoria_del_Postillione
+create database La_Trattoria_del_Postillione
 go
 
 USE La_Trattoria_del_Postillione;
