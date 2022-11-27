@@ -47,7 +47,7 @@
             <Button Content="Menü"  Click="Button_ZumHauptmenü" BorderThickness="0" Margin="1"/>
             <!--immer sichtbar-->
         </Border>
-        <Grid x:Name="MainGrid_Menü" Visibility="Visible">
+        <Grid x:Name="MainGrid_Menü" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="4*"/>
@@ -111,7 +111,7 @@
 
         </Grid>
         
-        <Grid x:Name="MainGrid_Rechungen_erstellen" d:IsHidden="True" >
+        <Grid x:Name="MainGrid_Rechungen_erstellen" d:IsHidden="False" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="5*"/>

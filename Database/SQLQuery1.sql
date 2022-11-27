@@ -44,6 +44,7 @@ CREATE TABLE Speise (
 
 
 
+
 CREATE TABLE Rechnung(
 	Rechnung_id INT identity(3000,1) PRIMARY KEY,
 	Rechnung_status nvarchar(20),
@@ -114,3 +115,6 @@ INSERT INTO Rechnung_element(Rechnung_id, Produkt_ID, Anzahl) VALUES(3003,2007,2
 INSERT INTO Rechnung_element(Rechnung_id, Produkt_ID, Anzahl) VALUES(3003,2009,2);
 
 Select * from Rechnung_element
+Select * from Rechnung
+Select * from Speise
+Select * from Mitarbeiter
