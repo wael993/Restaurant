@@ -64,3 +64,7 @@ F:\Arbeit\projekt\1_Erst\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.CoreC
 F:\Arbeit\projekt\1_Erst\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.CopyComplete
 F:\Arbeit\projekt\1_Erst\Restaurant\Restaurant\obj\Debug\Restaurant.exe
 F:\Arbeit\projekt\1_Erst\Restaurant\Restaurant\obj\Debug\Restaurant.pdb
+F:\Arbeit\projekt\1_Erst\Restaurant\Restaurant\bin\Debug\Restaurant.exe.manifest
+F:\Arbeit\projekt\1_Erst\Restaurant\Restaurant\bin\Debug\Restaurant.application
+F:\Arbeit\projekt\1_Erst\Restaurant\Restaurant\obj\Debug\Restaurant.exe.manifest
+F:\Arbeit\projekt\1_Erst\Restaurant\Restaurant\obj\Debug\Restaurant.application
